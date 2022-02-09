@@ -1,0 +1,39 @@
+import {i18n, lang} from '../i18n';
+export const dataDays = [
+    {
+        id:1,
+        day:i18n.t("monday"),
+        time:"9:00-18:00"
+    },
+    {
+        id:2,
+        day:i18n.t("tuesday"),
+        time:"9:00-18:00"
+    },
+    {
+        id:3,
+        day:i18n.t("wednesday"),
+        time:"9:00-18:00"
+    },
+    {
+        id:4,
+        day:i18n.t("thursday"),
+        time:"9:00-18:00"
+    },
+    {
+        id:5,
+        day:i18n.t("friday"),
+        time:"9:00-18:00"
+    },
+    {
+        id:6,
+        day:i18n.t("saturday"),
+        time:"9:00-16:00"
+    },
+    {
+        id:7,
+        day:i18n.t("sunday"),
+        time:i18n.t("freeday")
+    },
+
+]

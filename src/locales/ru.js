@@ -1,0 +1,18 @@
+export default {
+    booking: "Запись",
+    worktime: "Время работы",
+    gmaps:"Google Maps",
+    phone:"Телефон",
+    facebook:"Facebook",
+    procedures: "Процедуры",
+    instagram: "Instagram",
+    monday:"Понедельник",
+    tuesday:"Вторник",
+    wednesday:"Среда",
+    thursday:"Четверг",
+    friday:"Пятница",
+    saturday:"Суббота",
+    sunday:"Воскресенье",
+    freeday:"Закрыто",
+    back:"Назад",
+  };

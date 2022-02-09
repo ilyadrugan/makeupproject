@@ -1,0 +1,4 @@
+{
+    "NSCameraUsageDescription": "This app uses the photo library to scan barcodes on the photos you selected",
+    "NSPhotoLibraryUsageDescription": "This app uses the camera to scan barcodes"
+}
