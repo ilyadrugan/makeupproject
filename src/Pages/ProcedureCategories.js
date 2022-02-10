@@ -35,7 +35,7 @@ export default function ProcedureCategories({navigation}) {
 
       <View style={styles.containerPages}>
           <View style={styles.container2}>
-            <Header pageName={i18n.t("procedures")} navigation={navigation}/>
+            {/* <Header pageName={i18n.t("procedures")} navigation={navigation}/> */}
             {isLoading?<ActivityIndicator animating={true} size="large" color="#00ff00"/>:<FlatList data={categories} renderItem={renderItem}  keyExtractor={item => item.id}/>}
             
           

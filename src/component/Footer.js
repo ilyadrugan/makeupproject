@@ -22,7 +22,7 @@ const Footer = ({ navigation }) => {
          <View
         style={styles.footerContainer1}
       >
-         <TouchableOpacity style={styles.iconContainer}>
+         <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Contacts')}>
          <Phone  width={56} height={56} />
         <Text style={styles.iconText}>{i18n.t("phone")}</Text>
         </TouchableOpacity>
@@ -37,7 +37,7 @@ const Footer = ({ navigation }) => {
         <Text style={styles.iconText}>{i18n.t("worktime")}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconContainer}>
+        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('GMaps')}>
         <Map  width={56} height={56} />
         <Text style={styles.iconText}>{i18n.t("gmaps")}</Text>
         </TouchableOpacity>
@@ -46,7 +46,7 @@ const Footer = ({ navigation }) => {
       <View
         style={styles.footerContainer1}
       >
-        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WebView', {link: facebookLink, nameLink:"Facebook"})}>
+        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WebView', {link: facebookLink, title:"Facebook"})}>
         <Facebook width={60} height={60}/>
         <Text style={styles.iconText}>{i18n.t("facebook")}</Text>
         </TouchableOpacity>
@@ -56,7 +56,7 @@ const Footer = ({ navigation }) => {
         <Text style={styles.iconText}>{i18n.t("procedures")}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WebView', {link: instagramLink, nameLink:"Instagram"})}>
+        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WebView', {link: instagramLink, title:"Instagram"})}>
         <Instagram width={60} height={60}/>
         <Text style={styles.iconText}>{i18n.t("instagram")}</Text>
         </TouchableOpacity>       

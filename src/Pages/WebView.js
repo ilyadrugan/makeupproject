@@ -8,7 +8,7 @@ export default function Webview({navigation,route}) {
   return (
 
       <View style={[styles.containerPages, {backgroundColor:"#FFF"}]}>
-        <Header pageName={route.params.nameLink} navigation={navigation}/>
+        {/* <Header pageName={route.params.nameLink} navigation={navigation}/> */}
     <WebView 
       
       source={{ uri: route.params.link }}

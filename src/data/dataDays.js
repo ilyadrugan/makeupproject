@@ -28,7 +28,7 @@ export const dataDays = [
     {
         id:6,
         day:i18n.t("saturday"),
-        time:"9:00-16:00"
+        time:"8:00-13:00"
     },
     {
         id:7,

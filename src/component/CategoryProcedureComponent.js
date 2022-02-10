@@ -8,11 +8,11 @@ export default function CategoryProcedureComponent({category,category_en_name,ca
 
     return(
         
-            <TouchableOpacity style={styles.wrkTextContainerStyle} onPress={() => navigation.navigate('Procedures', {category_en_name: category_en_name, category_name:category})}>
+            <TouchableOpacity style={styles.wrkTextContainerStyle} onPress={() => navigation.navigate('Procedures', {title: category,category_en_name: category_en_name, category_name:category})}>
                 <View style={styles.procedureContainerStyle}>
                     <Image style={styles.iconimage}  source={{uri:"http://192.168.0.16/photos/"+category_icon}}></Image>
                 {/* <Icon name={category_icon} size={30}/> */}
-                 <Text style={{fontSize:16, marginLeft:10}}>{category}</Text>
+                 <Text style={{fontSize:18, marginLeft:10}}>{category}</Text>
                  </View>
                  <Icon name="keyboard-arrow-right"/>
              </TouchableOpacity>

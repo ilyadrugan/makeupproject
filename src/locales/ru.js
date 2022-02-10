@@ -2,8 +2,9 @@ export default {
     booking: "Запись",
     worktime: "Время работы",
     gmaps:"Google Maps",
-    phone:"Телефон",
+    phone:"Контакты",
     facebook:"Facebook",
+    price: "Цены",
     procedures: "Процедуры",
     instagram: "Instagram",
     monday:"Понедельник",
@@ -15,4 +16,6 @@ export default {
     sunday:"Воскресенье",
     freeday:"Закрыто",
     back:"Назад",
+    ladies:"Женский",
+    mens:"Мужской",
   };

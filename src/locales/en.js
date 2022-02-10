@@ -4,6 +4,7 @@ export default {
   gmaps:"Google Maps",
   phone:"Contacts",
   facebook:"Facebook",
+  price: "Price",
   procedures: "Procedures",
   instagram: "Instagram",
   monday:"Monday",
@@ -15,5 +16,6 @@ export default {
   sunday:"Sunday",
   freeday:"Free day",
   back:"Back",
-
+  ladies:"Ladies",
+  mens:"Men's",
   };

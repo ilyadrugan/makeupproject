@@ -15,7 +15,7 @@ export default function Worktime({navigation}) {
 
       <View style={styles.containerPages}>
           <View style={styles.container2}>
-            <Header pageName={i18n.t("worktime")} navigation={navigation}/>
+            {/* <Header pageName={i18n.t("worktime")} navigation={navigation}/> */}
             <FlatList data={dataDays} renderItem={renderItem}  keyExtractor={item => item.id}/>
         </View>
       </View>

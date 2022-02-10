@@ -13,7 +13,46 @@ const styles = StyleSheet.create({
     width:windowWidth,
     height:windowHeight,
   },
-
+  contactContainer:{
+    
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent:"flex-start"
+  },
+  contactCard:{
+    marginVertical:"5%",
+    paddingHorizontal:"2%",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  contactCardImage:{
+    resizeMode: 'contain',
+    width: 100,
+    height: 100,  
+  },
+  contactCardText:{
+    marginLeft:14,
+    flex: 1,
+    flexDirection: "column",
+    height: 100,  
+    justifyContent:"center"
+  },
+  contactCardMainText:{
+    fontSize:20,
+  },
+  contactCardSecondText:{
+    fontSize:16,
+    color:"#808080"
+  },
+  contactLine:{
+    paddingHorizontal:"4%",
+    width:windowWidth,
+    height:50,
+    justifyContent:"space-between",
+    flexDirection:"row",
+    alignItems: "center",
+    borderBottomWidth: 1,
+  },
   container: {
    padding:"3%",
     backgroundColor: backColor,
@@ -28,45 +67,11 @@ const styles = StyleSheet.create({
     padding: "8%",
     justifyContent: "space-evenly",
   },
-  containerSecondary: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  containerCenter: {
 
-    flex: 1,
-    backgroundColor: backColor,
-    alignItems: "center",
-    justifyContent: "center",
-    width:windowWidth,
-    height:windowHeight,
-  },
-  containerBottom: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    marginBottom: 110,
-  },
-  containerRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-  },
   container2: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: "flex-start",
-   
-  },
-
-  titleText: {
-    fontSize: 25,
-  },
-
-  textError: {
-    borderColor: "red",
-    backgroundColor: "rgba(255,0,47, 0.1)",
   },
 
   icon: {
@@ -75,30 +80,11 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     position: "absolute",
   },
-
-  buttons: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    padding: 8,
-  },
-
-  button: {
-    margin: 8,
-    alignSelf: "center",
-    borderColor: mainColor,
-    borderWidth: 2,
-    paddingHorizontal: 12,
-    paddingVertical: 3,
-  },
-  buttontext: {
-    fontSize: 20,
-    color: mainColor,
-    textAlign: "center",
-  },
-  buttonMargin: {
-    marginVertical: 20,
-  },
-
+  image: {
+    width: windowWidth,
+    height: windowHeight /4,
+    resizeMode:"contain"
+},
   dialog: {
     padding: 20,
     width: "90%",
@@ -144,11 +130,10 @@ const styles = StyleSheet.create({
     marginTop:20
   },
   headerStyle:{
-    
-    alignItems: "center",
     width:"100%",
+    flex:1,
+    alignItems: "center",
     textAlign:"center",
-    marginVertical:windowHeight*0.04
   },
   webviewheaderStyle:{
     alignItems: "center",
@@ -170,14 +155,13 @@ const styles = StyleSheet.create({
     paddingHorizontal:"4%",
     width:windowWidth,
     height:50,
-    flex:1,
     justifyContent:"space-between",
     flexDirection:"row",
     alignItems: "center",
   },
 
   procedureContainerStyle:{
-    backgroundColor:"#FFF1E0",
+    // borderBottomWidth: 1,
     flex:1,
     flexDirection:"row",
     alignItems: "center",

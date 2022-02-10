@@ -17,6 +17,9 @@ class Urls {
     procedure(id) {
         return `${this.url}api/procedures/${id}/`
     }
+    contacts(id) {
+        return `${this.url}api/contacts/${id}/`
+    }
 }
 
 export default urls = new Urls()

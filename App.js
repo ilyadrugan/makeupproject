@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "react-native";
@@ -11,6 +11,8 @@ import Booking from "./src/Pages/Booking";
 import GMaps from "./src/Pages/GMaps";
 import Contacts from "./src/Pages/Contacts";
 import WebView from "./src/Pages/WebView";
+import { i18n, lang } from './src/i18n';
+import styles from './src/constant/styles';
 
 
 
@@ -25,7 +27,8 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="MainPage"
         screenOptions={{
-          headerShown: false,
+          headerStyle: {backgroundColor:"#FFF1E0"},
+          headerShown: true,
           cardStyle: { backgroundColor: "transparent" },
           cardOverlayEnabled: true,
           cardStyleInterpolator: ({ current: { progress } }) => ({
@@ -46,11 +49,17 @@ export default function App() {
         }}
         presentation="modal"
       >
-        <Stack.Screen name="MainPage" component={MainPage} />
-        <Stack.Screen name="Worktime" component={Worktime} />
-        <Stack.Screen name="ProcedureCategories" component={ProcedureCategories} />
-        <Stack.Screen name="Procedures" component={Procedures} />
-        <Stack.Screen name="WebView" component={WebView} />
+        <Stack.Screen name="MainPage" component={MainPage} options={{headerShown: false}}/>
+        <Stack.Screen
+          name="Worktime"
+          component={Worktime}
+          options={{ title: i18n.t("worktime")}}
+        />
+        <Stack.Screen name="GMaps" component={GMaps} options={{ title: i18n.t("gmaps")}}/>
+        <Stack.Screen name="Contacts" component={Contacts} options={{ title: i18n.t("phone")}}/>
+        <Stack.Screen name="ProcedureCategories" component={ProcedureCategories}   options={{ title: i18n.t("procedures")}}/>
+        <Stack.Screen name="Procedures" component={Procedures} options={({ route }) => ({ title: route.params.title })}/>
+        <Stack.Screen name="WebView" component={WebView} options={({ route }) => ({ title: route.params.title })}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
