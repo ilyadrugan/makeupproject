@@ -18,4 +18,14 @@ export default {
   back:"Back",
   ladies:"Ladies",
   mens:"Men's",
+  sex:"Sex",
+  category:"Category",
+  next:"Next",
+  firstName:"First name",
+  lastName:"Last name",
+  mobile:"Mobile phone",
+  time:"Desired recording time",
+  send:"Send",
+  alert:"Fill the all fields",
+  alertRequest:"Post sent"
   };

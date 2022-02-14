@@ -18,4 +18,14 @@ export default {
     back:"Назад",
     ladies:"Женский",
     mens:"Мужской",
+    sex:"Пол",
+    category:"Категория",
+    next:"Далее",
+    firstName:"Имя",
+    lastName:"Фамилия",
+    mobile:"Мобильный телефон",
+    time:"Желаемое время записи",
+    send:"Отправить",
+    alert:"Заполните все поля",
+    alertRequest:"Запись отправлена"
   };

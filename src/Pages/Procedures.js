@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, FlatList,ActivityIndicator,Text , Image,SafeAreaView } from 'react-native'
-import Header from '../component/Header';
+
 import ProcedureComponent from '../component/ProcedureComponent';
 import {i18n, lang} from '../i18n';
 
@@ -39,21 +39,22 @@ export default function Procedures({ navigation, route }) {
     
     return (
 
-      <View style={styles.containerPages}>
-        {isLoading?<ActivityIndicator animating={true} size="large" color="#00ff00"/>:(
+      <View style={[styles.containerPages,{backgroundColor:"#FFF1E0"}]}>
+        {isLoading?<ActivityIndicator style={styles.containerIndicator}animating={true} size="large" color="#e9cf63"/>:(
         <View style={styles.container2}> 
-          <SafeAreaView style={{ flex: 1 }} >
-          {/* <Image style={styles.image} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9mHQMD9_CVr9q-yXhwoIUSBcGQVDpg00d9A&usqp=CAU" }} />
-          <View style={styles.wrkTextContainerStyle} >
+          
+          <Image style={styles.image} source={{ uri: urls.url+"photos/"+route.params.picture }} />
+          <View style={[styles.wrkTextContainerStyle, styles.ramkastyle,{marginTop:10}]} >
                  <Text style={{fontSize:18, marginLeft:10}}>{i18n.t("price")}:</Text>
                  <Text style={{fontSize:18}}>{i18n.t("ladies")} / {i18n.t("mens")} </Text>
-             </View> */}
+             </View>
+             <View  style={styles.flatlistyle}>
             {/* <Header pageName={route.params.category_name} navigation={navigation}/> */}
             <FlatList  data={procedures} renderItem={renderItem}  keyExtractor={item => item.id}/>
             
           
             
-        </SafeAreaView >
+        </View >
         </View>
      )}
       </View>

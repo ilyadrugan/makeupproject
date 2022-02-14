@@ -1,6 +1,6 @@
 class Urls {
     constructor() {
-        this.url = 'http://192.168.0.16:80/';
+        this.url = 'http://cv32950.tmweb.ru/';
     }
 
     categories_procedures() {
@@ -19,6 +19,12 @@ class Urls {
     }
     contacts(id) {
         return `${this.url}api/contacts/${id}/`
+    }
+    requests() {
+        return `${this.url}api/requests/`
+    }
+    mainpage_photos() {
+        return `${this.url}api/mainpage_photos/`
     }
 }
 

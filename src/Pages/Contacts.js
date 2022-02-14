@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View,TouchableOpacity, Image,ActivityIndicator,Text, Linking } from 'react-native'
-import Header from '../component/Header';
+import { View,TouchableOpacity, Image,ActivityIndicator,Text, Linking,Dimensions } from 'react-native'
+
 import ProcedureComponent from '../component/ProcedureComponent';
 import {i18n, lang} from '../i18n';
 import Phone from "../assets/icons/phone.svg";
@@ -13,6 +13,8 @@ import styles, * as styleConstants from '../constant/styles';
 import urls  from '../modules/urls';
 import {callNumber} from '../modules/callnumber';
 const iconSize = 30
+const windowHeight = Dimensions.get('window').height;
+
 export default function Contacts({ navigation, route }) {
     const [contactsData, setContactsData] = useState()
     const [isLoading, setLoading] = useState(true);
@@ -31,25 +33,22 @@ export default function Contacts({ navigation, route }) {
         
       }, [])
 
-    const renderItem = ({ item }) => (
-        <ProcedureComponent procedure={item[lang]}/>
-      );
     
     return (
 
-      <View style={styles.containerPages }>
-          {isLoading?<ActivityIndicator animating={true} size="large" color="#00ff00"/>:(
+      <View style={styles.containerPages}>
+          {isLoading?<ActivityIndicator style={{top:windowHeight*0.4}} animating={true} size="large" color="#e9cf63"/>:(
           <View style={styles.contactContainer}>
             <View style={styles.contactCard}>
                 
                 <Image style={styles.contactCardImage} source={require("../assets/icon.png")}></Image>
                 <View style={styles.contactCardText}>
                 <Text style={styles.contactCardMainText}>Beauty Home Kosmetik Lounge Bad Berleburg</Text>
-                <Text style={styles.contactCardSecondText}>Some text</Text>
+                <Text style={styles.contactCardSecondText}>{contactsData.undertitle}</Text>
                 </View>
                
             </View>
-            {/* {isLoading?<ActivityIndicator animating={true} size="large" color="#00ff00"/>:<FlatList data={procedures} renderItem={renderItem}  keyExtractor={item => item.id}/>} */}
+            {/* {isLoading?<ActivityIndicator style={styles.containerIndicator}animating={true} size="large" color="#e9cf63"/>:<FlatList data={procedures} renderItem={renderItem}  keyExtractor={item => item.id}/>} */}
             <TouchableOpacity style={styles.contactLine} onPress={() => callNumber(contactsData.phoneNumber)}>
                 <Text>{contactsData.phone_number}</Text>
                 <Phone  width={iconSize} height={iconSize} />

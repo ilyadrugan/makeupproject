@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Dimensions, FlatList } from 'react-native'
+import { View, Text } from 'react-native'
 import styles from '../constant/styles';
 import * as React from 'react';
 

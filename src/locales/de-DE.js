@@ -18,4 +18,14 @@ export default {
     back:"Zurück",
     ladies:"Damen",
     mens:"Herren",
+    sex:"Geschlecht",
+    category:"Kategorie",
+    next:"Weiter",
+    firstName:"Vorname",
+    lastName:"Nachname",
+    mobile:"Mobiltelefon",
+    time:"Gewünschte Aufnahmezeit",
+    send:"Senden",
+    alert:"Alle Felder ausfüllen",
+    alertRequest:"Post verschickt"
 };

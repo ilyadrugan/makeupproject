@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { WebView } from 'react-native-webview';
-import Header from '../component/Header';
+
 import styles from '../constant/styles';
 
 export default function Webview({navigation,route}) {

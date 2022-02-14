@@ -27,7 +27,7 @@ const Footer = ({ navigation }) => {
         <Text style={styles.iconText}>{i18n.t("phone")}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconContainer}>
+        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('Booking')}>
         <Calendar  width={56} height={56}/>
         <Text style={styles.iconText}>{i18n.t("booking")}</Text>
         </TouchableOpacity>

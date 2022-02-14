@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     height:windowHeight,
   },
   contactContainer:{
-    
     flex: 1,
     flexDirection: 'column',
     justifyContent:"flex-start"
@@ -80,10 +79,14 @@ const styles = StyleSheet.create({
     borderColor: "#000000",
     position: "absolute",
   },
+  ramkastyle:{
+    borderBottomWidth:1,
+    borderTopWidth:1,
+  },
   image: {
     width: windowWidth,
     height: windowHeight /4,
-    resizeMode:"contain"
+    resizeMode:"contain",
 },
   dialog: {
     padding: 20,
@@ -167,14 +170,37 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   containerIndicator: {
-    flex: 1,
-    justifyContent: "center"
+    top:windowHeight*0.4,
+    alignItems: "center",
   },
   horizontal: {
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10
-  }
+  },
+  flatlistyle:{
+    maxHeight :0.6*windowHeight
+  },
+  buttonNext:{
+    width:120,
+    height:80,
+
+  },
+  buttonContainer:{
+    flexDirection:"row",
+    justifyContent:"space-between",
+    marginHorizontal:6,
+    padding:10,
+  },
+  textInputstyle:{
+    height: 40,
+    margin: 6,
+    borderBottomWidth: 1,
+    padding: 6,
+    borderRadius:1,
+    fontSize:18
+  },
+
 });
 
 export default styles;

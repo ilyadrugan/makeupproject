@@ -1,7 +1,7 @@
 import * as Localization from 'expo-localization';
-import de from "./locales/de.js"
-import ru from "./locales/ru.js"
-import en from "./locales/en.js"
+import de from "./locales/de-DE.js"
+import ru from "./locales/ru-RU.js"
+import en from "./locales/en-EN.js"
 
 import i18n from 'i18n-js';
 

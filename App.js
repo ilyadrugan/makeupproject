@@ -11,6 +11,8 @@ import Booking from "./src/Pages/Booking";
 import GMaps from "./src/Pages/GMaps";
 import Contacts from "./src/Pages/Contacts";
 import WebView from "./src/Pages/WebView";
+import PersonalDataForm from "./src/Pages/PersonalDataForm";
+
 import { i18n, lang } from './src/i18n';
 import styles from './src/constant/styles';
 
@@ -60,6 +62,9 @@ export default function App() {
         <Stack.Screen name="ProcedureCategories" component={ProcedureCategories}   options={{ title: i18n.t("procedures")}}/>
         <Stack.Screen name="Procedures" component={Procedures} options={({ route }) => ({ title: route.params.title })}/>
         <Stack.Screen name="WebView" component={WebView} options={({ route }) => ({ title: route.params.title })}/>
+        <Stack.Screen name="Booking" component={Booking} options={{ title: i18n.t("booking") }}/>
+        <Stack.Screen name="PersonalDataForm" component={PersonalDataForm} options={{ title: i18n.t("booking") }}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

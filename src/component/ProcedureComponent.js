@@ -5,7 +5,6 @@ import {i18n, lang} from '../i18n';
 
 export default function ProcedureComponent({procedure}) {
 
-console.log(lang)
     return(
         
             <View style={styles.wrkTextContainerStyle} >
