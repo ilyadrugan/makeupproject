@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Dimensions } from 'react-native';
 
 const mainColor = "#000000";
-const backColor = "#F2E0D0";
+const backColor = "#f2e0d0";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const inconSize = 48;
@@ -102,8 +102,7 @@ const styles = StyleSheet.create({
   mainimage:{
     resizeMode: 'contain',
     width: undefined,
-    height: windowHeight*0.16,  
-    marginTop:10,
+    height: windowHeight*0.18,  
   
   },
   iconimage:{
@@ -200,7 +199,10 @@ const styles = StyleSheet.create({
     borderRadius:1,
     fontSize:18
   },
-
+  carouselContIndicator:{
+    width: windowWidth*0.94 - 20,
+    height: windowHeight / 3 -20,
+  }
 });
 
 export default styles;

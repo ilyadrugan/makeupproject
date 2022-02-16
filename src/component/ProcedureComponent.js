@@ -9,7 +9,7 @@ export default function ProcedureComponent({procedure}) {
         
             <View style={styles.wrkTextContainerStyle} >
                  <Text style={{fontSize:18, marginLeft:10}}>{procedure[lang]}</Text>
-                 <Text style={{fontSize:18}}>{procedure["price_women"]} € / {procedure["price_men"]} €</Text>
+                 <Text style={{fontSize:18}}>{procedure["price_women"]} € / {procedure["price_men"]==0?"--":procedure["price_men"]} €</Text>
              </View>
 
     );

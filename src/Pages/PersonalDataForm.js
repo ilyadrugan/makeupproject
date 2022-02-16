@@ -1,22 +1,41 @@
-import { View, Text, TextInput,Button,Alert } from 'react-native'
+import { View, Text, TextInput,Button,Alert,Platform } from 'react-native'
 import styles from '../constant/styles';
 import React, { useState, useEffect} from 'react';
 import {i18n, lang} from '../i18n';
 import urls from '../modules/urls';
 import { useNavigation } from '@react-navigation/native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function PersonalDataForm({route}) {
     const [firstName, onChangefirstName] = useState("");
     const [lastName, onChangelastName] = useState("");
     const [email, onChangeemail] = useState("");
     const [mobile, onChangemobile] = useState("");
-    const [time, onChangetime] = useState("");
-    const [dataRequest, setDataRequest] = useState(route.params.dataRequest);
-    const navigation = useNavigation();
+    const [show, setShow] = useState(false);
+    const [mode, setMode] = useState('date');
+    const [date, setDate] = useState(new Date());
+    const options = {year: 'numeric', month: 'short', day: 'numeric' };
 
+    const navigation = useNavigation();
+    const showMode = (currentMode) => {
+      setShow(true);
+      setMode(currentMode);
+    };
+    const showDatepicker = () => {
+      showMode('date');
+    };
+  
+    const showTimepicker = () => {
+      showMode('time');
+    };
+    const onChange = (event, selectedDate) => {
+      const currentDate = selectedDate || date;
+      setShow(Platform.OS === 'ios');
+      setDate(currentDate);
+    };
     const sendRequest= async()=>{
         // console.log(firstName,lastName,email,mobile,time, "dwdwdw")
-        if (firstName=="" || lastName=="" || email=="" || mobile=="" ||  time==""){
+        if (firstName=="" || lastName=="" || email=="" || mobile==""){
             Alert.alert(
                 "",
                 i18n.t('alert'),
@@ -35,7 +54,7 @@ export default function PersonalDataForm({route}) {
                 last_name:lastName,
                 email:email,
                 phone:mobile,
-                time:time,
+                time:date.toDateString(i18n.locale, options)+" "+(date.getHours()>9?date.getHours().toString():("0"+date.getHours().toString()))+":"+(date.getMinutes()>9?date.getMinutes().toString():("0"+date.getMinutes().toString())),
             };
             let response = await fetch(urls.requests(), {
                 method: 'POST',
@@ -74,7 +93,18 @@ export default function PersonalDataForm({route}) {
                 <TextInput value={lastName} onChangeText={onChangelastName}  style={styles.textInputstyle} placeholder={i18n.t("lastName")}/>
                 <TextInput value={email} onChangeText={onChangeemail}  style={styles.textInputstyle} placeholder="E-Mail"/>
                 <TextInput value={mobile} onChangeText={onChangemobile}  style={styles.textInputstyle} placeholder={i18n.t("mobile")}/>
-                <TextInput value={time} onChangeText={onChangetime}  style={styles.textInputstyle} placeholder={i18n.t("time")}/>
+               <View style={{flexDirection:"row", justifyContent:"space-between", marginBottom:4, marginHorizontal:10}}>
+                <Button onPress={showDatepicker} title={date.toDateString(i18n.locale, options)} />
+                <Button onPress={showTimepicker} title={(date.getHours()>9?date.getHours().toString():("0"+date.getHours().toString()))+":"+(date.getMinutes()>9?date.getMinutes().toString():("0"+date.getMinutes().toString()))}/>
+                </View>
+                {show && <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={mode}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />}
                 <Button onPress={() => sendRequest()}  style={styles.buttonNext} title={i18n.t('send')}/>
 
         </View>

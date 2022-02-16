@@ -38,7 +38,6 @@ export default function Booking({navigation}) {
         })
         .then(resp => resp.json())
         .then(data => {
-          console.log(data)
           let struct = {};
           let dataArr = [];
           data.map((item,i)=>{
@@ -69,7 +68,7 @@ export default function Booking({navigation}) {
         .then(data => {
          
           let struct = dbStruct
-          console.log("getProcedures",struct)
+          // console.log("getProcedures",struct)
           let dataArr = [];
           
           data.map((item,i)=>{
@@ -77,7 +76,7 @@ export default function Booking({navigation}) {
             dataArr.push(val)
             struct[item["category"]]["procedures"].push(item)
           })
-
+         
           sortCategories(struct, sexs["key"])
           setdbStruct(struct)
           setProcedures(data)
@@ -86,20 +85,22 @@ export default function Booking({navigation}) {
         .catch(error => console.log("Error is : ", error))
       }
       const sortCategories = (struct, sexx) =>{
-        setdbStruct([])
-        console.log("SEX",sexx)
+        // console.log(struct)
         setSexCur(sexx)
         let checker = sexx =="mens"?"price_men":"price_women"
         let forViewCats=[]
         for (var key in struct) {
-          // console.log(key)
+          console.log("key",key)
           
-          struct[key]["procedures"].forEach(item => {
-            
+          struct[key]["procedures"].map((item, i) => {
+            console.log("item", key,item)
             if (item[checker]==0){
-              struct[key]["procedures"].splice(item)
+              struct[key]["procedures"].splice(i,1)
+              console.log("item deleted")
             }
           });
+          console.log(key,struct[key])
+          // console.log(struct[key]["procedures"], key)
           if (struct[key]["procedures"].length!=0) {
             console.log(struct[key]["value"])
             let val = {"value":struct[key]["value"]}
@@ -107,10 +108,10 @@ export default function Booking({navigation}) {
             
           }
         }
+        console.log(struct, forViewCats)
         setdbStruct(struct)
         // console.log(forViewCats)
         setCategoriesForView(forViewCats)
-
         setf1(false)
       }
       const sortProcedures = (value) =>{
@@ -158,10 +159,6 @@ export default function Booking({navigation}) {
         setDataRequest(value)
       }
 
-    const renderItem = ({ item }) => (
-
-        <CategoryProcedures category={item[lang]} category_en_name={item.en_title} navigation={navigation} category_icon={item.icon}/>
-      );
     
     return (
 
@@ -195,22 +192,13 @@ export default function Booking({navigation}) {
         baseColor={'transparent'}
         onChangeText={(value, index, data)=>choosenProcedure(data[index])}
       />}
-             {/* {f3?null:(<TextInput 
-                style={{
-                height: 40,
-                margin: 6,
-                borderWidth: 1,
-                padding: 6,}}
 
-                />)} */}
 
               {f3?null:( <View style={styles.buttonContainer}>
                 <Text style={{fontSize:18}}>{dataRequest.price} €</Text>
                 <Button onPress={() => navigation.navigate('PersonalDataForm', {dataRequest: dataRequest, navigation:navigation})}  style={styles.buttonNext} title={i18n.t('next')}/>
                 </View>)}
-              
-            {/* {isLoading?<ActivityIndicator style={styles.containerIndicator}animating={true} size="large" color="#e9cf63"/>:<FlatList data={categories} renderItem={renderItem}  keyExtractor={item => item.id}/>} */}
-            
+                          
             </View>
            
             

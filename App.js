@@ -12,9 +12,7 @@ import GMaps from "./src/Pages/GMaps";
 import Contacts from "./src/Pages/Contacts";
 import WebView from "./src/Pages/WebView";
 import PersonalDataForm from "./src/Pages/PersonalDataForm";
-
 import { i18n, lang } from './src/i18n';
-import styles from './src/constant/styles';
 
 
 
@@ -25,7 +23,7 @@ export default function App() {
   
   return (
     <NavigationContainer>
-      <StatusBar hidden={true} backgroundColor="#ffffff" barStyle="#ffffff" />
+      <StatusBar />
       <Stack.Navigator
         initialRouteName="MainPage"
         screenOptions={{
@@ -51,7 +49,7 @@ export default function App() {
         }}
         presentation="modal"
       >
-        <Stack.Screen name="MainPage" component={MainPage} options={{headerShown: false}}/>
+        <Stack.Screen name="MainPage" component={MainPage} options={{title: i18n.t("main")}}/>
         <Stack.Screen
           name="Worktime"
           component={Worktime}

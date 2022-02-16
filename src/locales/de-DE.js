@@ -1,4 +1,5 @@
 export default {
+    main:"Heimat",
     booking: "Termin buchen",
     worktime: "Öffnungszeiten",
     gmaps:"Karte",

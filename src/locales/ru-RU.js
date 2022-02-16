@@ -1,4 +1,5 @@
 export default {
+    main: "Главная",
     booking: "Запись",
     worktime: "Время работы",
     gmaps:"Google Maps",

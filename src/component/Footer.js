@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles, * as styleConstants from '../constant/styles';
-import { View,Text, TouchableOpacity } from 'react-native';
+import { View,Text, TouchableOpacity,Linking } from 'react-native';
 import Phone from "../assets/icons/phone.svg";
 import Calendar from "../assets/icons/calendar.svg";
 import Facebook from "../assets/icons/facebook.svg";
@@ -46,7 +46,7 @@ const Footer = ({ navigation }) => {
       <View
         style={styles.footerContainer1}
       >
-        <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WebView', {link: facebookLink, title:"Facebook"})}>
+        <TouchableOpacity style={styles.iconContainer} onPress={() => Linking.openURL(facebookLink)}>
         <Facebook width={60} height={60}/>
         <Text style={styles.iconText}>{i18n.t("facebook")}</Text>
         </TouchableOpacity>

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
         flex: 1,
         width: width*0.94 - 20,
-        height: height / 3,
+        height: height / 3 - 20,
         backgroundColor: 'white',
         margin: 10,
         borderRadius: 10,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     },
     image: {
         width: width*0.94 - 20,
-        height: height / 3,
+        height: height / 3 - 20,
         borderRadius: 10
     },
     itemTitle: {

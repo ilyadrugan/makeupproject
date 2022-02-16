@@ -37,8 +37,8 @@ export default function App({ navigation }) {
       <View style={styles.container}>
         <View style={styles.container2}>
             <Image
-            style={styles.mainimage} source={require("../assets/logo.png")}/>
-                 {isLoading?<ActivityIndicator animating={true} size="large" color="#e9cf63"/>:  <Carousel data = {Data}/>}
+            style={styles.mainimage} source={require("../assets/logo.jpg")}/>
+                 {isLoading?<ActivityIndicator style={styles.carouselContIndicator} animating={true} size="large" color="#e9cf63"/>:  <Carousel data = {Data}/>}
             <Footer navigation={navigation}/>
         </View>
       </View>

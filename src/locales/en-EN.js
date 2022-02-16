@@ -1,4 +1,5 @@
 export default {
+  main: "Main",
   booking: "Book an appointment",
   worktime: "Work time",
   gmaps:"Google Maps",
