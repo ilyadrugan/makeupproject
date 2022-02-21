@@ -8,6 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 const inconSize = 48;
 const styles = StyleSheet.create({
+  
   containerPages:{
     backgroundColor: backColor,
     width:windowWidth,
@@ -183,7 +184,7 @@ const styles = StyleSheet.create({
   buttonNext:{
     width:120,
     height:80,
-
+    
   },
   buttonContainer:{
     flexDirection:"row",
@@ -202,6 +203,28 @@ const styles = StyleSheet.create({
   carouselContIndicator:{
     width: windowWidth*0.94 - 20,
     height: windowHeight / 3 -20,
+  },
+  timeCard:{
+    width:windowWidth/4,
+    height:50,
+    borderWidth:1,
+    alignItems:"center",
+    justifyContent:"center",
+    margin:10,
+    backgroundColor:"#FFF1E0"
+  },
+  timeCardChecked:{
+    width:windowWidth/4,
+    height:50,
+    borderWidth:1,
+    alignItems:"center",
+    justifyContent:"center",
+    margin:10,
+    backgroundColor:"#feccd5",
+    borderColor:"#feccd5"
+  },
+  flatPD:{
+    maxHeight:windowHeight/1.75,
   }
 });
 

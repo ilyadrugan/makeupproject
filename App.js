@@ -12,6 +12,7 @@ import GMaps from "./src/Pages/GMaps";
 import Contacts from "./src/Pages/Contacts";
 import WebView from "./src/Pages/WebView";
 import PersonalDataForm from "./src/Pages/PersonalDataForm";
+import TimePicker from "./src/Pages/TimePicker";
 import { i18n, lang } from './src/i18n';
 
 
@@ -62,7 +63,7 @@ export default function App() {
         <Stack.Screen name="WebView" component={WebView} options={({ route }) => ({ title: route.params.title })}/>
         <Stack.Screen name="Booking" component={Booking} options={{ title: i18n.t("booking") }}/>
         <Stack.Screen name="PersonalDataForm" component={PersonalDataForm} options={{ title: i18n.t("booking") }}/>
-
+        <Stack.Screen name="TimePicker" component={TimePicker} options={{ title: i18n.t("booking") }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

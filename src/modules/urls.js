@@ -26,6 +26,12 @@ class Urls {
     mainpage_photos() {
         return `${this.url}api/mainpage_photos/`
     }
+    staff() {
+        return `${this.url}api/staff/`
+    }
+    specialists() {
+        return `${this.url}api/specialists/`
+    }
 }
 
 export default urls = new Urls()

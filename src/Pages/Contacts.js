@@ -65,7 +65,7 @@ export default function Contacts({ navigation, route }) {
                 <Text>{contactsData.site.slice(0,5)=="https"?contactsData.site.slice(8):(contactsData.site.slice(0,4)=="http"?contactsData.site.slice(7):contactsData.site)}</Text>
                 <Globe  width={iconSize} height={iconSize} />
              </TouchableOpacity>
-             <TouchableOpacity style={styles.contactLine} onPress={() => navigation.navigate('WebView', {link: contactsData.facebook_link, title:"Facebook"})}>
+             <TouchableOpacity style={styles.contactLine} onPress={() =>  Linking.openURL(contactsData.facebook_link)}>
                 <Text>Facebook</Text>
                 <Facebook  width={iconSize} height={iconSize} />
              </TouchableOpacity>
