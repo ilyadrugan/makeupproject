@@ -4,8 +4,7 @@ import {i18n, lang} from '../i18n';
 import styles, * as styleConstants from '../constant/styles';
 import  urls  from '../modules/urls';
 import { Dropdown } from 'react-native-material-dropdown-v2-fixed';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { timezone } from 'expo-localization';
+
 
 
 export default function BookingComponent({dataForm,navigation, stateChanger, data, stateLoadChanger,refreshing,setNextFlag}) {
@@ -129,7 +128,6 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
             
           }
         }
-        // console.log(forViewProc)
         let tmpArray = [];
         function itemCheck(item) {
             if (tmpArray.indexOf(item["value"]) === -1) {
@@ -140,7 +138,6 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
         }
         forViewProc = forViewProc.filter((item) => itemCheck(item))
         setProceduresForView(forViewProc)
-        // console.log(dbStruct)
         setf2(false)
       }
 
@@ -149,13 +146,11 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
         
         setDtFlag(true)
         setProcedureCur(value)
-        // console.log(dbStruct)
         console.log(sexCur, categoryCur, value)
         value["category"]=categoryCur
         setDataRequest(value)
         dataForm.datarequest=value
         dataForm.datarequest["specialist"]=i18n.t("prefspec")
-        console.log("dataForm.datarequest",dataForm.datarequest)
         getSpecialistsProcedures(value["id"])
         setf3(false)
         setf4(false)
@@ -164,14 +159,12 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
         if (value.value!=i18n.t('prefspec')){
           specsInfo.map((item)=>{
             if(item.name==value.value) {
-              // console.log(item)
               let a=[]
               a.push(item)
               return setSpecialistInfo(a)
             }
           })
         }
-        // console.log(value)
         setSpecialist(value.value)
         setTimeChoosen("")
         let spec = value
@@ -196,7 +189,6 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
              dataArr.push(val)
          }
          })
-        //  console.log("tmpArr", tmpArr, specialist)
          setSpecsInfo(tmpArr)
         setSpecialistForView(dataArr)
         })
@@ -215,7 +207,6 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
              dataProcs.push(val)
          }
          })
-         console.log("dataProcs", dataProcs)
         getSpecialists(dataProcs)
         })
         .catch(error => console.log("Error is : ", error))
@@ -266,10 +257,6 @@ export default function BookingComponent({dataForm,navigation, stateChanger, dat
       {timeChoosen==""?null:( 
           <View style={styles.buttonContainer}>
                 <Text style={{fontSize:18}}>{dataRequest.price} €</Text>
-                {/* {nextFlag?null:(<View style={{flexDirection:"row"}}> 
-                <Button  onPress={() => addMore()}  style={[styles.buttonNext], {padding:10}} title={i18n.t('more')}/> 
-                  <Button onPress={() => navigation.navigate('PersonalDataForm', {dataRequest: dataRequest, navigation:navigation})}  style={styles.buttonNext} title={i18n.t('go')}/>
-                </View>)} */}
                 </View>)}
                           
             </View>

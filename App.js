@@ -63,7 +63,7 @@ export default function App() {
         <Stack.Screen name="WebView" component={WebView} options={({ route }) => ({ title: route.params.title })}/>
         <Stack.Screen name="Booking" component={Booking} options={{ title: i18n.t("booking") }}/>
         <Stack.Screen name="PersonalDataForm" component={PersonalDataForm} options={{ title: i18n.t("booking") }}/>
-        <Stack.Screen name="TimePicker" component={TimePicker} options={{ title: i18n.t("booking") }}/>
+        <Stack.Screen name="TimePicker" component={TimePicker} />
       </Stack.Navigator>
     </NavigationContainer>
   );

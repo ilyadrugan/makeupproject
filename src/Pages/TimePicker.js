@@ -17,7 +17,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function TimePicker({}) {
     const route = useRoute()
-    // console.log("route",route.params.dataForm.datarequest)
     const [startDate, setStartDate] =useState(new Date())
     const [clickedTime, setClickedTime] = useState("")
     const [clickedDT, setClickedDT] = useState(startDate)
@@ -53,8 +52,9 @@ export default function TimePicker({}) {
 
     }, [])
     const makeWorkTimes=(date)=>{
-        // setTimeSpecs({})
       let dayOfweek=date.getDay()
+      let timezone = date.getTimezoneOffset()/60
+      console.log("getTimezoneOffset",timezone)
       switch (dayOfweek) {
         case 1:
           let timeArr = [];
@@ -68,8 +68,6 @@ export default function TimePicker({}) {
             let start = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(startTime[0], 10), parseInt(startTime[1], 10), 0))
             let end =new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(endTime[0], 10), parseInt(endTime[1], 10), 0))
             let timesbook=[]
-            console.log("timebook",timebook)
-            console.log("timeBookedArr",timeBookedArr)
             if (!timebook.length){
               timeBookedArr.map((it)=>{
                 console.log(it)
@@ -99,7 +97,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -133,7 +131,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -143,10 +141,9 @@ export default function TimePicker({}) {
             var objs=timeSpecs
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
               koef=1
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
-              console.log(value)
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                     if (timesbook.includes(value)){
                       f=1
@@ -156,7 +153,7 @@ export default function TimePicker({}) {
                     objs[value]==undefined?objs[value]=[item.name]:objs[value].push(item.name)
                   }
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -209,7 +206,6 @@ export default function TimePicker({}) {
           let timeArr2 = [];
           var timeSpecs={}
           route.params.specialist.map((item)=>{
-            // console.log(item)
             let startTime = item.tuesday_start
             let endTime = item.tuesday_end
             if (startTime == null){ return 0}
@@ -218,7 +214,6 @@ export default function TimePicker({}) {
             let start = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(startTime[0], 10), parseInt(startTime[1], 10), 0))
             let end =new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), parseInt(endTime[0], 10), parseInt(endTime[1], 10), 0))
             let timesbook=[]
-            console.log("timebook",timebook)
             if (!timebook.length){
               timeBookedArr.map((it)=>{
                 console.log(it)
@@ -248,7 +243,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -282,7 +277,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -291,9 +286,9 @@ export default function TimePicker({}) {
             
             var objs=timeSpecs
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                   if (timesbook.includes(value)){
                     f=1
@@ -303,7 +298,7 @@ export default function TimePicker({}) {
                 }
                   !f?timeArr2.push(value):null
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -335,11 +330,9 @@ export default function TimePicker({}) {
             console.log("objs",objs)
 
           })
-          // console.log("timeArr2",timeArr2)
           timeArr2.sort()
 
           const mySet2 = new Set(timeArr2);
-          console.log("mySet2",mySet2)
 
           let arr2 =[]
           let sub2 = []
@@ -355,7 +348,6 @@ export default function TimePicker({}) {
             }
             i2+=1
           }
-          // arr2.splice(-1,koeff)
           setTimeCards(arr2)
            break;
         case 3:
@@ -372,7 +364,6 @@ export default function TimePicker({}) {
             let timesbook=[]
             if (!timebook.length){
               timeBookedArr.map((it)=>{
-                console.log(it)
                 let dt=new Date(it.time)
                 if (it.specialist==item.name && date.toDateString()==dt.toDateString()){
                   let n=it.duration/15
@@ -399,7 +390,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -433,7 +424,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -444,9 +435,9 @@ export default function TimePicker({}) {
 
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
               koef=1
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                   if (timesbook.includes(value)){
                     f=1
@@ -456,7 +447,7 @@ export default function TimePicker({}) {
                 }
                   !f?timeArr3.push(value):null
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -548,7 +539,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -582,7 +573,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -593,9 +584,9 @@ export default function TimePicker({}) {
 
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
               koef=1
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                   if (timesbook.includes(value)){
                     f=1
@@ -605,7 +596,7 @@ export default function TimePicker({}) {
                 }
                   !f?timeArr4.push(value):null
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -671,7 +662,6 @@ export default function TimePicker({}) {
             let timesbook=[]
             if (!timebook.length){
               timeBookedArr.map((it)=>{
-                console.log(it)
                 let dt=new Date(it.time)
                 if (it.specialist==item.name && date.toDateString()==dt.toDateString()){
                   let n=it.duration/15
@@ -698,7 +688,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -732,20 +722,19 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
               timesbook=timesbook.concat(tmpArr)
             }
-            console.log("timesbook",timesbook)
             var objs=timeSpecs
 
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
               koef=1
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                   if (timesbook.includes(value)){
                     f=1
@@ -755,7 +744,7 @@ export default function TimePicker({}) {
                 }
                   !f?timeArr5.push(value):null
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -785,7 +774,6 @@ export default function TimePicker({}) {
             timeSpecs=objs
             setTimeSpecs(timeSpecs)
             console.log("objs",objs)
-
           })
           timeArr5.sort()
           // console.log("timeArr5",timeArr5)
@@ -805,7 +793,6 @@ export default function TimePicker({}) {
             i5+=1
           }
           setTimeCards(arr5)
-         
           break;
         case 6:
           let timeArr6 = [];
@@ -821,7 +808,6 @@ export default function TimePicker({}) {
             let timesbook=[]
             if (!timebook.length){
               timeBookedArr.map((it)=>{
-                console.log(it)
                 let dt=new Date(it.time)
                 if (it.specialist==item.name && date.toDateString()==dt.toDateString()){
                   let n=it.duration/15
@@ -848,7 +834,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -882,7 +868,7 @@ export default function TimePicker({}) {
               let n=koeff-1
               while (n>0){
                 newEnd.setMinutes(newEnd.getMinutes()-15)
-                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()-3:newEnd.getHours()-3)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
+                let t = (newEnd.getHours()<10?"0"+newEnd.getHours()+timezone:newEnd.getHours()+timezone)+":"+(newEnd.getMinutes()<10?"0"+newEnd.getMinutes():newEnd.getMinutes())
                 tmpArr.push(t)
                 n-=1
               }
@@ -893,9 +879,9 @@ export default function TimePicker({}) {
 
             while (start.getHours()!=end.getHours() || start.getMinutes()!=end.getMinutes()){
               koef=1
-              var value=((start.getHours()-3)<10?"0"+(start.getHours()-3):start.getHours()-3)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
+              var value=((start.getHours()+timezone)<10?"0"+(start.getHours()+timezone):start.getHours()+timezone)+":"+(start.getMinutes()<10?"0"+start.getMinutes():start.getMinutes())
               if (date.toDateString()==new Date().toDateString()){
-                if (start.getHours()-3>new Date().getHours()){
+                if (start.getHours()+timezone>new Date().getHours()){
                   let f=0
                   if (timesbook.includes(value)){
                     f=1
@@ -905,7 +891,7 @@ export default function TimePicker({}) {
                 }
                   !f?timeArr6.push(value):null
                 }
-                else if (start.getHours()-3==new Date().getHours()){
+                else if (start.getHours()+timezone==new Date().getHours()){
                   if (start.getMinutes()>=new Date().getMinutes()){
                     let f=0
                     if (timesbook.includes(value)){
@@ -934,7 +920,6 @@ export default function TimePicker({}) {
             }
             timeSpecs=objs
             setTimeSpecs(timeSpecs)
-            console.log("objs",objs)
 
           })
           timeArr6.sort()
@@ -975,16 +960,11 @@ export default function TimePicker({}) {
     
     }
     const onDateChange = (date) => {
-      // setTimeSpecs({})
       setLoading(true)
       setStartDate(new Date(date))
-      // setTimeout(()=>makeWorkTimes(new Date(date)), 500)
       makeWorkTimes(new Date(date))
-      // setTimeout(()=>, 500)
-      // setRefr(!refr)
     }
     const onClick =(time)=>{
-      console.log(startDate)
       setClickedDT(startDate)
       setClickedTime(time)
   }
@@ -1004,8 +984,8 @@ export default function TimePicker({}) {
       onDateChange={onDateChange}
       minDate={new Date()}
       height={windowHeight*0.5}
-      startFromMonday={true}
-      weekdays={[i18n.t("mo"), i18n.t("tue"), i18n.t("wed"), i18n.t("thu"), i18n.t("fri"), i18n.t("sat"), i18n.t("sun")]}
+      startFromMonday={false}
+      weekdays={[ i18n.t("sun"),i18n.t("mo"), i18n.t("tue"), i18n.t("wed"), i18n.t("thu"), i18n.t("fri"), i18n.t("sat"),]}
       months={[i18n.t("january"), i18n.t("february"), i18n.t("march"), i18n.t("april"), i18n.t("may"), i18n.t("june"), i18n.t("july"), i18n.t("august"), i18n.t("september"), i18n.t("october"), i18n.t("november"), i18n.t("december")]}
       previousTitle={i18n.t("previous")}
       nextTitle={i18n.t("next")}
