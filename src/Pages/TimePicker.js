@@ -984,8 +984,8 @@ export default function TimePicker({}) {
       onDateChange={onDateChange}
       minDate={new Date()}
       height={windowHeight*0.5}
-      startFromMonday={false}
-      weekdays={[ i18n.t("sun"),i18n.t("mo"), i18n.t("tue"), i18n.t("wed"), i18n.t("thu"), i18n.t("fri"), i18n.t("sat"),]}
+      startFromMonday={true}
+      weekdays={[ i18n.t("mo"), i18n.t("tue"), i18n.t("wed"), i18n.t("thu"), i18n.t("fri"), i18n.t("sat"),i18n.t("sun")]}
       months={[i18n.t("january"), i18n.t("february"), i18n.t("march"), i18n.t("april"), i18n.t("may"), i18n.t("june"), i18n.t("july"), i18n.t("august"), i18n.t("september"), i18n.t("october"), i18n.t("november"), i18n.t("december")]}
       previousTitle={i18n.t("previous")}
       nextTitle={i18n.t("next")}

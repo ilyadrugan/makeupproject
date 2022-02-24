@@ -53,7 +53,7 @@ export default function Contacts({ navigation, route }) {
                 <Text>{contactsData.phone_number}</Text>
                 <Phone  width={iconSize} height={iconSize} />
              </TouchableOpacity>
-             <TouchableOpacity style={styles.contactLine} onPress={() => null}>
+             <TouchableOpacity style={styles.contactLine} onPress={() =>  navigation.navigate('GMaps')}>
                 <Text>{contactsData.map_position}</Text>
                 <Map  width={iconSize} height={iconSize} />
              </TouchableOpacity>

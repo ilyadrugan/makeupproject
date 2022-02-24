@@ -10,13 +10,9 @@ import Services from "../assets/icons/services.svg";
 import Time from "../assets/icons/time.svg";
 import {i18n, lang} from '../i18n';
 
-const iconSize = 46
-const facebookLink = "https://www.facebook.com/The-Beauty-Lounge-234135003629345/"
-const instagramLink = "https://www.instagram.com/Beautyhomekosmetiklounge/"
+const Footer = ({ navigation,facebookLink,instagramLink }) => {
 
 
-const Footer = ({ navigation }) => {
-  
     return(
       <View style={styles.containerFooter}>
          <View

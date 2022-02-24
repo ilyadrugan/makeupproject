@@ -113,15 +113,15 @@ const styles = StyleSheet.create({
   },
 
   footerContainer1:{
-    flex:1,
+    marginTop:40,
     flexDirection: 'row',
     justifyContent: "space-around",
   },
   containerFooter:{
-    marginTop:90,
-    flex: 1,
+    marginTop:30,
     flexDirection: 'column',
-    justifyContent: "space-evenly",
+    justifyContent:"flex-start",
+    flex:1
   },
   iconContainer:{
     alignItems:"center",

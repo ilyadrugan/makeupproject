@@ -17,14 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.beautyHomeKosmetikLoungeBadBerleburg",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.ilyadev.beauty_home_kosmetik_lounge_bad_berleburg"
+      "package": "com.beauty_home_kosmetik_lounge_bad_berleburg",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
