@@ -41,7 +41,7 @@ export default function Contacts({ navigation, route }) {
           <View style={styles.contactContainer}>
             <View style={styles.contactCard}>
                 
-                <Image style={styles.contactCardImage} source={require("../assets/icon.png")}></Image>
+                <Image style={styles.contactCardImage} source={require("../assets/kontakte_icon.png")}></Image>
                 <View style={styles.contactCardText}>
                 <Text style={styles.contactCardMainText}>Beauty Home Kosmetik Lounge Bad Berleburg</Text>
                 <Text style={styles.contactCardSecondText}>{contactsData.undertitle}</Text>
