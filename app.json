@@ -2,7 +2,7 @@
   "expo": {
     "name": "Beauty Home Kosmetik Lounge Bad Berleburg",
     "slug": "beauty_home_kosmetik_lounge_bad_berleburg",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "splash": {
@@ -17,8 +17,18 @@
       "**/*"
     ],
     "ios": {
+      "infoPlist": {
+        "CFBundleDisplayName" : "Beauty Home Kosmetik Lounge",
+        "NSHumanReadableCopyright" : "2022 Alex Neneshtil Alle Rechte vorbehalten.",
+        "CFBundleAllowMixedLocalizations": true
+      },
       "bundleIdentifier": "com.beautyHomeKosmetikLoungeBadBerleburg",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
+    },
+    "locales": {
+      "de": "./src/locales/deutsch.json",
+      "en": "./src/locales/english.json",
+      "ru": "./src/locales/russian.json"
     },
     "android": {
       "adaptiveIcon": {
